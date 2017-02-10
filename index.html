@@ -4,7 +4,7 @@
   <head>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
   <link rel="stylesheet" href="http://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.css" />
-
+  <link rel="stylesheet" href="css/locationfilter.css" />
     <style>
       html, body {
         margin: 0px;
@@ -32,6 +32,7 @@
     <div id="mapid"></div>
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src="http://labs.easyblog.it/maps/leaflet-search/dist/leaflet-search.min.js"></script>
+    <script src="js/locationfilter.js"></script>
     <script>
 
       var mymap = L.map('mapid').setView([39.8282000, -98.5795000], 6);
@@ -60,6 +61,9 @@
     		autoType: false,
     		minLength: 2
     	}) );
+
+      var locationFilter = new L.LocationFilter().addTo(mymap);
+
 
     </script>
 
