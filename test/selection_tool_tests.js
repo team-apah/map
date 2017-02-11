@@ -13,7 +13,9 @@ describe("Selection Tool Tests", function() {
             'platform': 'Windows 7',
             'version': '55',
             'username': username,
-            'accessKey': accessKey
+            'accessKey': accessKey,
+            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+            'build': process.env.TRAVIS_BUILD_NUMBER,
         }).usingServer(
             "http://" + username + ":" + accessKey +
             "@ondemand.saucelabs.com:80/wd/hub"
