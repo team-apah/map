@@ -363,7 +363,7 @@ L.LocationFilter = L.Class.extend({
             return;
         }
 
-        this._map._adjustToMap();
+        //this._map._adjustToMap();
 
         // Initialize corners
         var bounds;
