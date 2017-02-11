@@ -3,11 +3,22 @@
 var assert = require("assert");
 var webdriver = require("selenium-webdriver");
 
+var username = "iguessthislldo";
+var accessKey = "dcc4af13-8c4b-4674-92fa-0b557fe02f80";
+ 
+ 
 describe("Selection Tool Tests", function() {
     beforeEach(function() {
         this.browser = new webdriver.Builder().withCapabilities({
-            browserName: "chrome"
-        }).build();
+            'browserName': 'chrome',
+            'platform': 'Windows 7',
+            'version': '55',
+            'username': username,
+            'accessKey': accessKey
+        }).usingServer(
+            "http://" + username + ":" + accessKey +
+            "@ondemand.saucelabs.com:80/wd/hub"
+        ).build();
 
         return this.browser.get("http://localhost:8000");
     });
