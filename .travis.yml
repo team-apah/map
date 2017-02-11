@@ -14,3 +14,5 @@ before_install:
 before_script:
 - python -m SimpleHTTPServer &
 - sleep 2
+notifications:
+  slack: wotus:jKTptWl7ZcL7rv2ON2axHODQ
