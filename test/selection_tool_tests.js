@@ -3,9 +3,8 @@
 var assert = require("assert");
 var webdriver = require("selenium-webdriver");
 
-var username = "iguessthislldo";
-var accessKey = "dcc4af13-8c4b-4674-92fa-0b557fe02f80";
- 
+var username = process.env.SAUCE_USERNAME;
+var accessKey = process.env.SAUCE_ACCESS_KEY;
  
 describe("Selection Tool Tests", function() {
     beforeEach(function() {
