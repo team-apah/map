@@ -9,14 +9,15 @@ var accessKey = process.env.SAUCE_ACCESS_KEY;
 describe("Selection Tool Tests", function() {
     beforeEach(function() {
         this.browser = new webdriver.Builder().withCapabilities({
-            'browserName': 'chrome',
+            'browserName': 'Chrome',
             'username': username,
             'accessKey': accessKey,
             'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
             'build': process.env.TRAVIS_BUILD_NUMBER,
         }).usingServer(
-            "http://" + username + ":" + accessKey +
-            "@ondemand.saucelabs.com:80/wd/hub"
+            //"http://" + username + ":" + accessKey +
+            //"@ondemand.saucelabs.com:80/wd/hub"
+            "http://ondemand.saucelabs.com:80/wd/hub"
         ).build();
 
         return this.browser.get("http://localhost:8000");
