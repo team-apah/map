@@ -10,8 +10,6 @@ describe("Selection Tool Tests", function() {
     beforeEach(function() {
         this.browser = new webdriver.Builder().withCapabilities({
             'browserName': 'chrome',
-            'platform': 'Windows 7',
-            'version': '55',
             'username': username,
             'accessKey': accessKey,
             'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
