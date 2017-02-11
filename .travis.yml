@@ -1,12 +1,9 @@
 language: node_js
 node_js:
 - '6.1'
-env:
-  global:
-    - SAUCE_USERNAME: iguessthislldo
-    - SAUCE_ACCESS_KEY: dcc4af13-8c4b-4674-92fa-0b557fe02f80
-addons:
-  sauce_connect: true
 before_script:
 - python -m SimpleHTTPServer &
 - sleep 2
+- "export DISPLAY=:99.0"
+- "sh -e /etc/init.d/xvfb start"
+- sleep 3 # give xvfb some time to start

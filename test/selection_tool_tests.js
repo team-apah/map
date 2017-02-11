@@ -2,23 +2,12 @@
 
 var assert = require("assert");
 var webdriver = require("selenium-webdriver");
-
-var username = process.env.SAUCE_USERNAME;
-var accessKey = process.env.SAUCE_ACCESS_KEY;
  
 describe("Selection Tool Tests", function() {
     beforeEach(function() {
         this.browser = new webdriver.Builder().withCapabilities({
-            'browserName': 'Chrome',
-            'username': username,
-            'accessKey': accessKey,
-            'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-            'build': process.env.TRAVIS_BUILD_NUMBER,
-        }).usingServer(
-            //"http://" + username + ":" + accessKey +
-            //"@ondemand.saucelabs.com:80/wd/hub"
-            "http://ondemand.saucelabs.com:80/wd/hub"
-        ).build();
+            'browserName': 'firefox',
+        }).build();
 
         return this.browser.get("http://localhost:8000");
     });
@@ -26,7 +15,6 @@ describe("Selection Tool Tests", function() {
     afterEach(function() {
         return this.browser.quit();
     });
-
 
     it("Enable selection tool", function(done) {
         // Get enable button
