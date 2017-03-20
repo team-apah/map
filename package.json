@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "pretest": "python2 -m SimpleHTTPServer & sleep 2",
     "test": "mocha --timeout 10000"
   },
   "devDependencies": {
