@@ -2,9 +2,11 @@
 <html lang="en">
 
   <head>
+  <title>WotUS Map</title>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
   <link rel="stylesheet" href="http://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.css" />
   <link rel="stylesheet" href="css/locationfilter.css" />
+  <link rel="stylesheet" href="js/leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.css" />
     <style>
       html, body {
         margin: 0px;
@@ -33,12 +35,19 @@
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src="http://labs.easyblog.it/maps/leaflet-search/dist/leaflet-search.min.js"></script>
     <script src="js/locationfilter.js"></script>
+    <script src="js/leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.js"></script>
     <script>
 
-      var mymap = L.map('mapid').setView([39.8282000, -98.5795000], 6);
+      //var mymap = L.map('mapid').setView([39.8282000, -98.5795000], 6);
+      var mymap = L.map('mapid', {
+            center: [39.0000085454, -89.9999783845],
+            zoom: 14,
+            minZoom: 6,
+            maxZoom: 14,
+      });
 
       L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 18,
+        maxZoom: 14,
         minZoom: 6,
         attribution: 'Tiles &copy; <a href="http://www.arcgis.com/home/item.html?id=30e5fe3149c34df1ba922e6f5bbf808f">Esri</a> &mdash; See credits | Search data &copy; <a href="https://nominatim.openstreetmap.org/">OpenStreetMap</a>',
         id: 'mapbox.streets'
@@ -48,9 +57,9 @@
         L.latLng(24.5208333,-124.7666667), //Southwest
         L.latLng(49.3844722,-66.9500000)  //Northeast
       );
-
       mymap.setMaxBounds(maxBounds);
       mymap.fitBounds(maxBounds);
+
       mymap.addControl( new L.Control.Search({
     		url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
     		jsonpParam: 'json_callback',
@@ -64,6 +73,35 @@
 
       var locationFilter = new L.LocationFilter().addTo(mymap);
 
+      // Add WotUS Tiles
+      var tile_options = {
+        tms: true,
+        opacity: 1,
+        attribution: "",
+        maxNativeZoom: 12,
+        maxZoom: 14
+      };
+      var lyr20k = L.tileLayer('tiles/20000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
+      var lyr15k = L.tileLayer('tiles/15000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
+      var lyr10k = L.tileLayer('tiles/10000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
+      var lyr5k = L.tileLayer('tiles/5000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
+
+      var overlaymaps = {
+        "20,000": lyr20k,
+        "15,000": lyr15k,
+        "10,000": lyr10k,
+        "5,000": lyr5k
+      };
+
+      var groupedOverlays = {
+        "Q/Threshold": overlaymaps
+      };
+
+      L.control.groupedLayers([], groupedOverlays, {
+        exclusiveGroups: ["Q/Threshold"],
+        collapsed: false,
+      }).addTo(mymap);
+      //L.control.layers([], overlaymaps, {collapsed: false}).addTo(mymap);
 
     </script>
 

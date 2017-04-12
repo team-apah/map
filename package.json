@@ -1,7 +1,8 @@
 {
   "scripts": {
     "pretest": "python2 -m SimpleHTTPServer & sleep 2",
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 10000",
+    "postinstall": "git submodule update --init --recursive"
   },
   "devDependencies": {
     "mocha": "^3.2.0",

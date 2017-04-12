@@ -1,0 +1,6 @@
+[submodule "js/leaflet-groupedlayercontrol"]
+	path = js/leaflet-groupedlayercontrol
+	url = https://github.com/ismyrnow/leaflet-groupedlayercontrol
+[submodule "js/leaflet-hash"]
+	path = js/leaflet-hash
+	url = https://github.com/mlevans/leaflet-hash
