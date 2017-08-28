@@ -1,0 +1,19 @@
+// This file holds styles for the about page.
+
+.aboutSection {
+
+}
+
+#aboutFirstSection {
+
+}
+
+.mdl-grid {
+    text-align: center;
+    justify-content: center;
+}
+
+h1 {
+    background-color: #7f8c8d;
+    color: white;
+}
