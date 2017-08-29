@@ -1,10 +1,54 @@
-// This file holds styles for the about page.
+/* This is a comment */
 
-.mdl-grid {
-    justify-content: center;
-}
 
 h1 {
-    background-color: #7f8c8d;
+    text-align: center;
+    background-color: #E8EAF6;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+a.mdl-list__item-primary-content {
+    text-decoration: none;
+}
+
+button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent {
     color: white;
+}
+
+span.mdl-layout-title {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+span.subtitle {
+    font-size: 14px;
+}
+
+.linkList {
+    text-align: center;
+}
+
+.linkLabel {
+    text-align: center;
+    font-size: 18px;
+}
+
+.tabInfo {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 2em;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+div.apahCards.mdl-card {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+img.apahPics {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
