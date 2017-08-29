@@ -43,6 +43,12 @@ span.subtitle {
 
 div.apahCards.mdl-card {
     display: inline-block;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+img.apahPics {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
