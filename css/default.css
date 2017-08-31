@@ -1,5 +1,6 @@
 /* This file holds styles common to both pages (navbar). */
 
+/* Welcome card */
 .transparent-overlay {
   position: fixed;
   background-color: rgba(96, 125, 139, .8);
@@ -8,17 +9,21 @@
   z-index: 1001;
 }
 
-/* Navbar title */
+/* Navbar */
 span.mdl-layout-title {
     font-size: 26px;
     margin-right: 12px;
 }
 
-/* Navbar subtitle*/
 span.subtitle {
     font-size: 14px;
 }
 
+a.mdl-navigation__link {
+        font-size: 20px;
+}
+
+/* Map stuff */
 html, body {
     margin: 0px;
     padding: 0px;
