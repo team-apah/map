@@ -4,7 +4,6 @@ var mymap = L.map('mapid', {
     minZoom: 11
 });
 
-
 L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; <a href="http://www.arcgis.com/home/item.html?id=30e5fe3149c34df1ba922e6f5bbf808f">Esri</a> &mdash; See credits | Search data &copy; <a href="https://nominatim.openstreetmap.org/">OpenStreetMap</a>',
     id: 'mapbox.streets'
@@ -14,6 +13,7 @@ var maxBounds = L.latLngBounds(
     L.latLng(38.653955, -90.278200), //Southwest Madison County Bounds
     L.latLng(39.002185, -89.591555) //Northeast Madison County Bounds
 );
+
 mymap.setMaxBounds(maxBounds);
 mymap.fitBounds(maxBounds);
 
@@ -31,7 +31,6 @@ mymap.addControl( new L.Control.Search({
 
 mymap.zoomControl.setPosition('bottomleft');
 
-
 // Add WotUS Tiles
 var tile_options = {
     tms: true,
@@ -39,6 +38,7 @@ var tile_options = {
     attribution: "",
     maxNativeZoom: 13
 };
+
 var lyr20k = L.tileLayer('tiles/20000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
 var lyr15k = L.tileLayer('tiles/15000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
 var lyr10k = L.tileLayer('tiles/10000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
@@ -61,6 +61,7 @@ L.control.groupedLayers([], groupedOverlays, {
     collapsed: false,
     position: "bottomright"
 }).addTo(mymap);
+
 function hideElement(el) {
     el.style.display='none';
 }
