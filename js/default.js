@@ -62,6 +62,14 @@ L.control.groupedLayers([], groupedOverlays, {
     position: "bottomright"
 }).addTo(mymap);
 
-function hideElement(el) {
-    el.style.display='none';
+window.onload = function () {
+    if (!localStorage.getItem("hasCodeRunBefore") == true) {
+        localStorage.setItem("hasCodeRunBefore", true);
+    } else {
+        $('#wotusWelcome').attr('class', 'hidden');
+    }
+}
+
+function closeWelcome() {
+    $('#wotusWelcome').fadeOut(1000);
 }

@@ -42,3 +42,7 @@ html, body {
 .leaflet-control-search {
     max-width:400px;
 }
+
+.hidden {
+    display: none;
+}

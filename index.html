@@ -15,7 +15,7 @@
 
     <body>
         <!-- Welcome card -->
-        <div class="transparent-overlay">
+        <div id="wotusWelcome" class="transparent-overlay">
             <div class="demo-card-wide mdl-card mdl-shadow--16dp" id="welcome-card">
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">Welcome</h2>
@@ -32,7 +32,7 @@
                     </a>
                 </div>
                 <div class="mdl-card__menu">
-                    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="hideElement(this.parentNode.parentNode.parentNode)">
+                    <button id="closeWelcome" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="closeWelcome()">
                         <i class="material-icons">close</i>
                     </button>
                 </div>
@@ -69,6 +69,8 @@
         <!-- Map -->
         <div id="mapid"></div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="js/jquery-3.2.1.min.js"></script>
         <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
         <script src="http://labs.easyblog.it/maps/leaflet-search/dist/leaflet-search.min.js"></script>
         <script src="js/locationfilter.js"></script>
