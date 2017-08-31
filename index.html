@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>WotUS Map</title>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
-    <link rel="stylesheet" href="http://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.css">
-    <link rel="stylesheet" href="css/locationfilter.css">
-    <link rel="stylesheet" href="js/leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="css/material.min.css">
-    <link rel="stylesheet" href="css/default.css" type="text/css">
+  <head>
+  <title>WotUS Map</title>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
+  <link rel="stylesheet" href="http://labs.easyblog.it/maps/leaflet-search/src/leaflet-search.css">
+  <link rel="stylesheet" href="css/locationfilter.css">
+  <link rel="stylesheet" href="js/leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/material.min.css">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="stylesheet" href="css/index.css">
 
     <style>
     html, body {
@@ -34,7 +35,30 @@
 
 </head>
 
-<body id="mdl-overrides">
+  <body id="mdl-overrides">
+    <div class="transparent-overlay">
+      <div class="demo-card-wide mdl-card mdl-shadow--16dp" id="welcome-card">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">Welcome</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          This project is a visualization tool to show which waterways would be
+          classified as protected under the Waters of the United States using a
+          specified amount of annual runoff. To learn more about this project
+          and Waters of the United States, visit the about page.
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a href="src/about.html" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            About this project
+          </a>
+        </div>
+        <div class="mdl-card__menu">
+          <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="hideElement(this.parentNode.parentNode.parentNode)">
+            <i class="material-icons">close</i>
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
@@ -61,6 +85,7 @@
         </div>
     </div>
     <div id="mapid"></div>
+    <script src="js/default.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src="http://labs.easyblog.it/maps/leaflet-search/dist/leaflet-search.min.js"></script>
     <script src="js/locationfilter.js"></script>
