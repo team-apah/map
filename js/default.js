@@ -17,6 +17,8 @@ var maxBounds = L.latLngBounds(
 mymap.setMaxBounds(maxBounds);
 mymap.fitBounds(maxBounds);
 
+mymap.zoomControl.setPosition('topleft');
+
 mymap.addControl( new L.Control.Search({
     url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
     jsonpParam: 'json_callback',
@@ -26,10 +28,8 @@ mymap.addControl( new L.Control.Search({
     autoCollapse: true,
     autoType: false,
     minLength: 2,
-    position: "bottomleft"
+    position: "topleft"
 }) );
-
-mymap.zoomControl.setPosition('bottomleft');
 
 // Add WotUS Tiles
 var tile_options = {
@@ -49,7 +49,7 @@ var overlaymaps = {
     "15,000": lyr15k,
     "10,000": lyr10k,
     "5,000": lyr5k,
-    "No overlay": mymap.removeLayer(lyr20k)
+    "No overlay": ""
 };
 
 var groupedOverlays = {
@@ -59,7 +59,7 @@ var groupedOverlays = {
 L.control.groupedLayers([], groupedOverlays, {
     exclusiveGroups: ["Q/Threshold"],
     collapsed: false,
-    position: "bottomright"
+    position: "bottomleft"
 }).addTo(mymap);
 
 window.onload = function () {
