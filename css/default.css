@@ -23,6 +23,10 @@ a.mdl-navigation__link {
     font-size: 2em;
 }
 
+div.mdl-layout__drawer {
+    z-index: 1001;
+}
+
 /* Map stuff */
 html, body {
     margin: 0px;
