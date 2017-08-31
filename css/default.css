@@ -46,3 +46,7 @@ html, body {
 .hidden {
     display: none;
 }
+
+.leaflet-top {
+    margin-top:75px;
+}
