@@ -1,27 +1,19 @@
 /* This is a comment */
 
-
+/* Tab headers */
 h1 {
     text-align: center;
     background-color: #E8EAF6;
     color: rgba(0, 0, 0, 0.75);
 }
 
+/* Link/label styling */
 a.mdl-list__item-primary-content {
     text-decoration: none;
 }
 
 button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent {
     color: white;
-}
-
-span.mdl-layout-title {
-    font-size: 24px;
-    margin-right: 10px;
-}
-
-span.subtitle {
-    font-size: 14px;
 }
 
 .linkList {
@@ -33,6 +25,7 @@ span.subtitle {
     font-size: 18px;
 }
 
+/* Info styling */
 .tabInfo {
     width: 80%;
     margin: auto;
@@ -41,10 +34,13 @@ span.subtitle {
     line-height: 32px;
 }
 
+/* Team cards */
 div.apahCards.mdl-card {
     display: inline-block;
     margin-left: 10px;
     margin-right: 10px;
+    width: 20%;
+    height: 400px;
 }
 
 img.apahPics {

@@ -1,1 +1,12 @@
-// This file holds styles common to both pages (navbar).
+/* Styles for the whole site */
+
+/* Navbar title */
+span.mdl-layout-title {
+    font-size: 26px;
+    margin-right: 12px;
+}
+
+/* Navbar subtitle*/
+span.subtitle {
+    font-size: 14px;
+}
