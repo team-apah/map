@@ -11,16 +11,16 @@
 
 /* Navbar */
 span.mdl-layout-title {
-    font-size: 26px;
-    margin-right: 12px;
+    font-size: 2.5em;
+    margin-right: .5em;
 }
 
 span.subtitle {
-    font-size: 14px;
+    font-size: .5em;
 }
 
 a.mdl-navigation__link {
-        font-size: 20px;
+    font-size: 2em;
 }
 
 /* Map stuff */
@@ -48,5 +48,5 @@ html, body {
 }
 
 .leaflet-top {
-    margin-top:75px;
+    margin-top: 5em;
 }

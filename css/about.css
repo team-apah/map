@@ -22,7 +22,7 @@ button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-butt
 
 .linkLabel {
     text-align: center;
-    font-size: 18px;
+    font-size: 1.5em;
 }
 
 /* Info styling */
@@ -30,21 +30,26 @@ button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-butt
     width: 80%;
     margin: auto;
     margin-bottom: 1.5em;
-    font-size: 18px;
-    line-height: 32px;
+    font-size: 1.5em;
+    line-height: 2em;
 }
 
 /* Team cards */
 div.apahCards.mdl-card {
     display: inline-block;
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 20%;
-    height: 350px;
+    margin-left: .1em;
+    margin-right: .1em;
+    width: 20em;
+    height: 22em;
 }
 
 img.apahPics {
-    width: 200px;
-    height: 200px;
+    width: 12em;
+    height: 12em;
     border-radius: 50%;
+}
+
+#github {
+    font-size: 1.25em;
+    margin-top: 1em;
 }
