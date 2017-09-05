@@ -14,10 +14,12 @@ a.mdl-list__item-primary-content {
 
 button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent {
     color: white;
+    margin-bottom: 1em;
 }
 
 .linkList {
     text-align: center;
+    justify-content: center;
 }
 
 .linkLabel {
@@ -30,15 +32,16 @@ button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-butt
     width: 80%;
     margin: auto;
     margin-bottom: 1.5em;
-    font-size: 1.5em;
-    line-height: 2em;
+    font-size: 2.25vmax;
+    line-height: 2.75vmax;
 }
 
 /* Team cards */
-div.apahCards.mdl-card {
+div.apahCards.mdl-card.mdl-cell {
     display: inline-block;
-    margin-left: .1em;
-    margin-right: .1em;
+    margin-left: .75vmax;
+    margin-right: .75vmax;
+    margin-bottom: .75vmax;
     width: 20em;
     height: 22em;
 }
@@ -52,4 +55,5 @@ img.apahPics {
 #github {
     font-size: 1.25em;
     margin-top: 1em;
+    width: 100%;
 }
