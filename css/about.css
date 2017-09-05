@@ -5,6 +5,12 @@ h1 {
     text-align: center;
     background-color: #E8EAF6;
     color: rgba(0, 0, 0, 0.75);
+    font-size: 3vmax;
+}
+
+a.mdl-tabs__tab {
+    font-size: 2vmax;
+    width: 30%;
 }
 
 /* Link/label styling */
@@ -24,7 +30,7 @@ button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-butt
 
 .linkLabel {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.75vmax;
 }
 
 /* Info styling */
@@ -53,7 +59,7 @@ img.apahPics {
 }
 
 #github {
-    font-size: 1.25em;
+    font-size: 1.75vmax;
     margin-top: 1em;
     width: 100%;
 }
