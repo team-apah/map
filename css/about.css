@@ -5,11 +5,11 @@ h1 {
     text-align: center;
     background-color: #E8EAF6;
     color: rgba(0, 0, 0, 0.75);
-    font-size: 3vmax;
+    font-size: 2.75vmax;
 }
 
 a.mdl-tabs__tab {
-    font-size: 2vmax;
+    font-size: 1.5vmax;
     width: 30%;
 }
 
@@ -30,6 +30,7 @@ button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-butt
 
 .linkLabel {
     text-align: center;
+    font-size: 1.5em; /* Backup in case vmax isnt supported */
     font-size: 1.75vmax;
 }
 
@@ -38,15 +39,22 @@ button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-butt
     width: 80%;
     margin: auto;
     margin-bottom: 1.5em;
-    font-size: 2.25vmax;
+    font-size: 1.5em; /* Backup in case vmax isnt supported */
+    font-size: 2vmax;
+    line-height: 2em; /* Backup in case vmax isnt supported */
     line-height: 2.75vmax;
 }
 
 /* Team cards */
 div.apahCards.mdl-card.mdl-cell {
     display: inline-block;
+    margin-left: .1em; /* Backup in case vmax isnt supported */
     margin-left: .75vmax;
+
+    margin-right: .1em; /* Backup in case vmax isnt supported */
     margin-right: .75vmax;
+
+    margin-bottom: .1em; /* Backup in case vmax isnt supported */
     margin-bottom: .75vmax;
     width: 20em;
     height: 22em;
@@ -59,6 +67,7 @@ img.apahPics {
 }
 
 #github {
+    font-size: 1.25em;
     font-size: 1.75vmax;
     margin-top: 1em;
     width: 100%;
