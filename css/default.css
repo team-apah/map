@@ -11,19 +11,16 @@
 
 /* Navbar */
 span.mdl-layout-title {
-    font-size: 2em; /* Backup in case vmax isnt supported */
-    font-size: 3vmax;
+    font-size: 2em;
     margin-right: .5em;
 }
 
 span.subtitle {
-    font-size: .5em; /* Backup in case vmax isnt supported */
-    font-size: 2vmax;
+    font-size: .5em;
 }
 
 a.mdl-navigation__link {
-    font-size: 2em; /* Backup in case vmax isnt supported */
-    font-size: 3vmax;
+    font-size: 2em; 
 }
 
 div.mdl-layout__drawer {
