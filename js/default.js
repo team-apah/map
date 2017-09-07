@@ -73,3 +73,12 @@ window.onload = function () {
 function closeWelcome() {
     $('#wotusWelcome').fadeOut(1000);
 }
+
+// Clicking on the Map gives a popup for a link to Google Maps
+mymap.on('click', function(e) {        
+    var popLocation = e.latlng;
+    var popup = L.popup()
+        .setLatLng(popLocation)
+        .setContent(gmaps_content(e.latlng))
+        .openOn(mymap);        
+});
