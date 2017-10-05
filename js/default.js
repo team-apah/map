@@ -70,6 +70,16 @@ window.onload = function () {
     }
 }
 
+$(document).ready(
+  function() {
+    $(".slider-input").change(
+      function() {
+        $(".slider-input").val($(this).val());
+      }
+    )
+  }
+)
+
 function closeWelcome() {
     $('#wotusWelcome').fadeOut(1000);
 }
