@@ -62,28 +62,6 @@ L.control.groupedLayers([], groupedOverlays, {
     position: "bottomleft"
 }).addTo(mymap);
 
-window.onload = function () {
-    if (!localStorage.getItem("hasCodeRunBefore") == true) {
-        localStorage.setItem("hasCodeRunBefore", true);
-    } else {
-        $('#wotusWelcome').attr('class', 'hidden');
-    }
-}
-
-$(document).ready(
-  function() {
-    $(".slider-input").change(
-      function() {
-        $(".slider-input").val($(this).val());
-      }
-    )
-  }
-)
-
-function closeWelcome() {
-    $('#wotusWelcome').fadeOut(1000);
-}
-
 // Clicking on the Map gives a popup for a link to Google Maps
 mymap.on('click', function(e) {        
     var popLocation = e.latlng;
@@ -92,3 +70,36 @@ mymap.on('click', function(e) {
         .setContent(gmaps_content(e.latlng))
         .openOn(mymap);        
 });
+
+function closeWelcome() {
+    $('#wotusWelcome').fadeOut(1000);
+}
+
+// When the Page Loads
+$(document).ready(function() {
+
+    // Welcome Message
+    if (!localStorage.getItem("hasCodeRunBefore") == true) {
+        localStorage.setItem("hasCodeRunBefore", true);
+    } else {
+        $('#wotusWelcome').attr('class', 'hidden');
+    }
+
+    // Slider
+    $(".slider-input").change(function() {
+        $(".slider-input").val($(this).val());
+    });
+
+    // Sumbit
+    $("#submit-button").click(function() {
+        console.log();
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/cahokia/wotus/" + $("#number-input").val(), true);
+        xhr.onload = function() {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+        };
+        xhr.send();
+    });
+})
+
