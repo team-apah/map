@@ -24,6 +24,7 @@
         <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" id="submit-button">
           Submit
         </button>
+        <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner" id="spinner"></div>
         <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" id="clear-button">
           Clear
         </button>
@@ -47,6 +48,23 @@
                 </div>
                 <div class="mdl-card__menu">
                     <button id="closeWelcome" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="closeWelcome()">
+                        <i class="material-icons">close</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Please Wait Card-->
+        <div id="wotusWait" class="hidden">
+            <div class="demo-card-wide mdl-card mdl-shadow--16dp" id="wait-card">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">Your map is being generated!</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Please wait while your map is being created. This might take a while. There is no need to refresh the page. Thanks for using WOTUS!
+                </div>
+                <div class="mdl-card__menu">
+                    <button id="closeWait" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="closeWait()">
                         <i class="material-icons">close</i>
                     </button>
                 </div>

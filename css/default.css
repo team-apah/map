@@ -20,7 +20,7 @@ span.subtitle {
 }
 
 a.mdl-navigation__link {
-    font-size: 2em; 
+    font-size: 2em;
 }
 
 div.mdl-layout__drawer {
@@ -57,4 +57,8 @@ html, body {
 
 div.leaflet-top {
     margin-top: 5em;
+}
+
+#spinner {
+    z-index: 1003;
 }
