@@ -14,20 +14,22 @@
     </head>
 
     <body>
+        <div id="sliderControls">
+            <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" id="submit-button">
+              Submit
+            </button>
+            <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner" id="spinner"></div>
+            <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" id="clear-button">
+              Clear
+            </button>
+        </div>
       <div id="slider-container">
-        <div id="map-slider">
-          <input class="mdl-slider mdl-js-slider slider-input" type="range" min="100" max="20000" value="200" step="100">
-        </div>
-        <div class="mdl-textfield mdl-js-textfield" id="slider-text">
-          <input class="mdl-textfield__input slider-input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="number-input" value="200">
-        </div>
-        <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" id="submit-button">
-          Submit
-        </button>
-        <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner" id="spinner"></div>
-        <button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect" id="clear-button">
-          Clear
-        </button>
+          <div id="map-slider">
+            <input class="mdl-slider mdl-js-slider slider-input" type="range" min="100" max="20000" value="200" step="100">
+          </div>
+          <div class="mdl-textfield mdl-js-textfield" id="slider-text">
+            <input class="mdl-textfield__input slider-input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="number-input" value="200">
+          </div>
       </div>
         <!-- Welcome card -->
         <div id="wotusWelcome" class="transparent-overlay">

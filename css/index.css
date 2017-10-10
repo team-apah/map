@@ -7,10 +7,25 @@
   opacity: 1;
 }
 
+#sliderControls {
+    z-index: 1002;
+    position: absolute;
+    width: 25%;
+    left: 50%; top: 89%;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+}
+
 #slider-container {
   margin: auto;
   position: absolute;
   width: 50%;
+  height: 5%;
   left: 50%; top: 100%;
   transform: translateY(-100%) translateX(-50%);
   z-index: 1002;
@@ -23,14 +38,13 @@
   background-color: white;
 }
 
-#map-slider {
-  flex: 1;
-  width: auto;
+#slider-text {
+    width: 10%;
+  padding-top: 0; padding-bottom: 0;
 }
 
-#slider-text {
-  width: 5em;
-  padding-top: 0; padding-bottom: 0;
+#map-slider {
+    width: 90%;
 }
 
 .mdl-textfield__input {
@@ -38,14 +52,14 @@
 }
 
 #submit-button {
-  width: 10em;
+  width: 40%;
   padding-top: 0; padding-bottom: 0;
   margin-left: 10px; margin-right: 10px;
   font-weight: bold;
 }
 
 #clear-button {
-  width: 10em;
+  width: 40%;
   padding-top: 0; padding-bottom: 0;
   margin-left: 10px; margin-right: 10px;
   font-weight: bold;
