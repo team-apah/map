@@ -43,3 +43,10 @@
   margin-left: 10px; margin-right: 10px;
   font-weight: bold;
 }
+
+#clear-button {
+  width: 10em;
+  padding-top: 0; padding-bottom: 0;
+  margin-left: 10px; margin-right: 10px;
+  font-weight: bold;
+}
