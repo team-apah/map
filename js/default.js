@@ -4,7 +4,7 @@ var mymap = L.map('mapid', {
     minZoom: 11
 });
 
-L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+var bg_layer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; <a href="http://www.arcgis.com/home/item.html?id=30e5fe3149c34df1ba922e6f5bbf808f">Esri</a> &mdash; See credits | Search data &copy; <a href="https://nominatim.openstreetmap.org/">OpenStreetMap</a>',
     id: 'mapbox.streets'
 }).addTo(mymap);
@@ -31,31 +31,6 @@ mymap.addControl( new L.Control.Search({
     position: "topleft"
 }) );
 
-// Add WotUS Tiles
-var tile_options = {
-    tms: true,
-    opacity: 1,
-    attribution: "",
-    maxNativeZoom: 13
-};
-
-var lyr20k = L.tileLayer('tiles/20000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
-var lyr15k = L.tileLayer('tiles/15000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
-var lyr10k = L.tileLayer('tiles/10000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
-var lyr5k = L.tileLayer('tiles/5000_wotus_tiles/{z}/{x}/{y}.png', tile_options);
-
-var overlaymaps = {
-    "20,000": lyr20k,
-    "15,000": lyr15k,
-    "10,000": lyr10k,
-    "5,000": lyr5k,
-    "No overlay": ""
-};
-
-var groupedOverlays = {
-    "Q/Threshold": overlaymaps
-};
-
 // Clicking on the Map gives a popup for a link to Google Maps
 mymap.on('click', function(e) {
     var popLocation = e.latlng;
@@ -71,6 +46,47 @@ function closeWelcome() {
 
 function closeWait() {
     $('#wotusWait').attr('class', 'hidden');
+}
+
+function disable_input() {
+    $('#wotusWait').attr('class', 'transparent-overlay');
+    $('#submit-button').attr('disabled', 'disabled');
+    $('#clear-button').attr('disabled', 'disabled');
+    $('#spinner').addClass('is-active');
+}
+
+function enable_input() {
+    $('#submit-button').removeAttr('disabled');
+    $('#clear-button').removeAttr('disabled');
+    $('#spinner').removeClass('is-active');
+}
+
+function clear_layers() {
+    mymap.eachLayer(function (layer) {
+        if (layer !== bg_layer) {
+            mymap.removeLayer(layer);
+        }
+    });
+}
+
+function request_q_value(q_value) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/cahokia/wotus/" + q_value, true);
+    xhr.onload = function() {
+        if (xhr.status != 200) {
+            setTimeout(function(){
+                request_q_value(q_value);
+            }, 5000);
+        } else {
+            enable_input();
+            var layer = L.tileLayer.wms('http://localhost:8080/geoserver/ows?', {
+                layers: 'wotus:' + q_value,
+                format: 'image/png',
+                transparent: true
+            }).addTo(mymap);
+        }
+    };
+    xhr.send();
 }
 
 // When the Page Loads
@@ -90,62 +106,12 @@ $(document).ready(function() {
 
     // Sumbit
     $("#submit-button").click(function() {
-        console.log();
-
-        mymap.eachLayer(function (layer) {
-            mymap.removeLayer(layer);
-        });
-
-        L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Tiles &copy; <a href="http://www.arcgis.com/home/item.html?id=30e5fe3149c34df1ba922e6f5bbf808f">Esri</a> &mdash; See credits | Search data &copy; <a href="https://nominatim.openstreetmap.org/">OpenStreetMap</a>',
-            id: 'mapbox.streets'
-        }).addTo(mymap);
-
-        $('#wotusWait').attr('class', 'transparent-overlay');
-        $('#submit-button').attr('disabled', 'disabled');
-        $('#clear-button').attr('disabled', 'disabled');
-        $('#spinner').addClass('is-active');
-
-        setTimeout(function() {
-            if ($("#number-input").val() > 15000) {
-                L.tileLayer('tiles/20000_wotus_tiles/{z}/{x}/{y}.png', {
-                    tms: true,
-                    opacity: 1,
-                    attribution: "",
-                    maxNativeZoom: 13}).addTo(mymap);
-            } else if ($("#number-input").val() > 10000) {
-                L.tileLayer('tiles/15000_wotus_tiles/{z}/{x}/{y}.png', {
-                    tms: true,
-                    opacity: 1,
-                    attribution: "",
-                    maxNativeZoom: 13}).addTo(mymap);
-            } else if ($("#number-input").val() > 5000) {
-                L.tileLayer('tiles/10000_wotus_tiles/{z}/{x}/{y}.png', {
-                    tms: true,
-                    opacity: 1,
-                    attribution: "",
-                    maxNativeZoom: 13}).addTo(mymap);
-            } else {
-                L.tileLayer('tiles/5000_wotus_tiles/{z}/{x}/{y}.png', {
-                    tms: true,
-                    opacity: 1,
-                    attribution: "",
-                    maxNativeZoom: 13}).addTo(mymap);
-            }
-            $('#submit-button').removeAttr('disabled');
-            $('#clear-button').removeAttr('disabled');
-            $('#spinner').removeClass('is-active');
-        }, 10000);
-
+        clear_layers();
+        disable_input();
+        request_q_value($("#number-input").val());
     });
 
     $("#clear-button").click(function() {
-        mymap.eachLayer(function (layer) {
-            mymap.removeLayer(layer);
-        });
-        L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-            attribution: 'Tiles &copy; <a href="http://www.arcgis.com/home/item.html?id=30e5fe3149c34df1ba922e6f5bbf808f">Esri</a> &mdash; See credits | Search data &copy; <a href="https://nominatim.openstreetmap.org/">OpenStreetMap</a>',
-            id: 'mapbox.streets'
-        }).addTo(mymap);
+        clear_layers();
     });
 })
