@@ -19,7 +19,7 @@ mymap.fitBounds(maxBounds);
 
 mymap.zoomControl.setPosition('topleft');
 
-mymap.addControl( new L.Control.Search({
+/*mymap.addControl( new L.Control.Search({
     url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
     jsonpParam: 'json_callback',
     propertyName: 'display_name',
@@ -29,7 +29,7 @@ mymap.addControl( new L.Control.Search({
     autoType: false,
     minLength: 2,
     position: "topleft"
-}) );
+}) );*/
 
 // Add WotUS Tiles
 var tile_options = {
