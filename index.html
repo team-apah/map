@@ -24,20 +24,23 @@
             </button>
         </div>
       <div id="slider-container">
+          <div id="sliderLabel">
+              WotUS Threshold:
+          </div>
           <div id="map-slider">
-            <input class="mdl-slider mdl-js-slider slider-input" type="range" min="100" max="20000" value="200" step="100">
+            <input class="mdl-slider mdl-js-slider slider-input" id="slider" type="range" min="100" max="20000" value="200" step="100">
           </div>
           <div class="mdl-textfield mdl-js-textfield" id="slider-text">
             <input class="mdl-textfield__input slider-input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="number-input" value="200">
           </div>
       </div>
         <!-- Welcome card -->
-        <div id="wotusWelcome" class="transparent-overlay">
+        <div id="wotusWelcome" class="transparent-overlay hidden">
             <div class="demo-card-wide mdl-card mdl-shadow--16dp" id="welcome-card">
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">Welcome!</h2>
                 </div>
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text mdl-card--expand">
                     This project is a visualization tool to show which waterways would be
                     classified as protected under the Waters of the United States using a
                     specified amount of annual runoff. To learn more about this project
@@ -62,7 +65,7 @@
                 <div class="mdl-card__title">
                     <h2 class="mdl-card__title-text">Your map is being generated!</h2>
                 </div>
-                <div class="mdl-card__supporting-text">
+                <div class="mdl-card__supporting-text mdl-card--expand">
                     Please wait while your map is being created. This might take a while. There is no need to refresh the page. Thanks for using WOTUS!
                 </div>
                 <div class="mdl-card__menu">
@@ -83,7 +86,7 @@
                     </span>
                     <div class="mdl-layout-spacer"></div>
                     <nav class="mdl-navigation mdl-layout--large-screen-only">
-                        <a class="mdl-navigation__link" href="#">Home</a>
+                        <a class="mdl-navigation__link" href="#">Map</a>
                         <a class="mdl-navigation__link" href="src/about.html">About</a>
                     </nav>
                 </div>
@@ -94,7 +97,7 @@
                     <span class="mdl-layout-title subtitle">by Team Apah</span>
                 </span>
                 <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="#">Home</a>
+                    <a class="mdl-navigation__link" href="#">Map</a>
                     <a class="mdl-navigation__link" href="src/about.html">About</a>
                 </nav>
             </div>

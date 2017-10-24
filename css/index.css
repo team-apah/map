@@ -1,3 +1,11 @@
+div.mdl-card__supporting-text {
+    font-size: 20px;
+    line-height: 22px;
+}
+
+h2.mdl-card__title-text {
+    font-size: 32px;
+}
 
 #welcome-card, #wait-card {
   margin: auto;
@@ -5,6 +13,8 @@
   left: 50%; top: 50%;
   transform: translateY(-50%) translateX(-50%);
   opacity: 1;
+  width: 40%;
+  height: 40%;
 }
 
 #sliderControls {
@@ -44,7 +54,7 @@
 }
 
 #map-slider {
-    width: 90%;
+    width: 70%;
 }
 
 .mdl-textfield__input {
@@ -63,4 +73,14 @@
   padding-top: 0; padding-bottom: 0;
   margin-left: 10px; margin-right: 10px;
   font-weight: bold;
+}
+
+#spinner {
+    z-index: 1003;
+}
+
+#sliderLabel {
+    color: #3f51b5;
+    font-weight: bold;
+    font-size: 14px;
 }

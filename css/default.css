@@ -58,7 +58,3 @@ html, body {
 div.leaflet-top {
     margin-top: 5em;
 }
-
-#spinner {
-    z-index: 1003;
-}
