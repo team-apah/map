@@ -17,7 +17,7 @@ var maxBounds = L.latLngBounds(
 mymap.setMaxBounds(maxBounds);
 mymap.fitBounds(maxBounds);
 
-mymap.zoomControl.setPosition('topleft');
+mymap.zoomControl.setPosition('bottomleft');
 
 // Clicking on the Map gives a popup for a link to Google Maps
 mymap.on('click', function(e) {
@@ -40,10 +40,10 @@ function closeWait() {
 // Slider
 $('#slider').on('input',function(){
    $("#slider-text").get(0).MaterialTextfield.change(this.value);
+   $("#number-input").focus();
 });
 $('#number-input').keyup(function() {
    $("#slider").get(0).MaterialSlider.change($( '#number-input').val());
-  console.dir($('#slide_01'));
 });
 
 // Sumbit
