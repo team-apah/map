@@ -4,7 +4,7 @@ var mymap = L.map('mapid', {
     minZoom: 11
 });
 
-var bg_layer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+var bg_layer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; <a href="http://www.arcgis.com/home/item.html?id=30e5fe3149c34df1ba922e6f5bbf808f">Esri</a> &mdash; See credits | Search data &copy; <a href="https://nominatim.openstreetmap.org/">OpenStreetMap</a>',
     id: 'mapbox.streets'
 }).addTo(mymap);
@@ -18,18 +18,6 @@ mymap.setMaxBounds(maxBounds);
 mymap.fitBounds(maxBounds);
 
 mymap.zoomControl.setPosition('topleft');
-
-mymap.addControl( new L.Control.Search({
-    url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
-    jsonpParam: 'json_callback',
-    propertyName: 'display_name',
-    propertyLoc: ['lat','lon'],
-    marker: L.circleMarker([0,0],{radius:7}),
-    autoCollapse: true,
-    autoType: false,
-    minLength: 2,
-    position: "topleft"
-}) );
 
 // Clicking on the Map gives a popup for a link to Google Maps
 mymap.on('click', function(e) {
@@ -79,7 +67,7 @@ function request_q_value(q_value) {
             }, 5000);
         } else {
             enable_input();
-            var layer = L.tileLayer.wms('http://localhost:8080/geoserver/ows?', {
+            var layer = L.tileLayer.wms('/geoserver/ows?', {
                 layers: 'wotus:' + q_value,
                 format: 'image/png',
                 transparent: true
