@@ -4,7 +4,7 @@ var mymap = L.map('mapid', {
     minZoom: 11
 });
 
-L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+var bg_layer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; <a href="http://www.arcgis.com/home/item.html?id=30e5fe3149c34df1ba922e6f5bbf808f">Esri</a> &mdash; See credits | Search data &copy; <a href="https://nominatim.openstreetmap.org/">OpenStreetMap</a>',
     id: 'mapbox.streets'
 }).addTo(mymap);
@@ -37,6 +37,7 @@ function closeWait() {
     $('#wotusWait').attr('class', 'hidden');
 }
 
+
 // Slider
 $('#slider').on('input',function(){
    $("#slider-text").get(0).MaterialTextfield.change(this.value);
@@ -46,65 +47,56 @@ $('#number-input').keyup(function() {
    $("#slider").get(0).MaterialSlider.change($( '#number-input').val());
 });
 
-// Sumbit
-$("#submit-button").click(function() {
-    console.log();
-
-    mymap.eachLayer(function (layer) {
-        mymap.removeLayer(layer);
-    });
-
-    L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles &copy; <a href="http://www.arcgis.com/home/item.html?id=30e5fe3149c34df1ba922e6f5bbf808f">Esri</a> &mdash; See credits | Search data &copy; <a href="https://nominatim.openstreetmap.org/">OpenStreetMap</a>',
-        id: 'mapbox.streets'
-    }).addTo(mymap);
-
+function disable_input() {
     $('#wotusWait').attr('class', 'transparent-overlay');
     $('#submit-button').attr('disabled', 'disabled');
     $('#clear-button').attr('disabled', 'disabled');
     $('#spinner').addClass('is-active');
+}
 
-    setTimeout(function() {
-        if ($("#number-input").val() > 15000) {
-            L.tileLayer('tiles/20000_wotus_tiles/{z}/{x}/{y}.png', {
-                tms: true,
-                opacity: 1,
-                attribution: "",
-                maxNativeZoom: 13}).addTo(mymap);
-        } else if ($("#number-input").val() > 10000) {
-            L.tileLayer('tiles/15000_wotus_tiles/{z}/{x}/{y}.png', {
-                tms: true,
-                opacity: 1,
-                attribution: "",
-                maxNativeZoom: 13}).addTo(mymap);
-        } else if ($("#number-input").val() > 5000) {
-            L.tileLayer('tiles/10000_wotus_tiles/{z}/{x}/{y}.png', {
-                tms: true,
-                opacity: 1,
-                attribution: "",
-                maxNativeZoom: 13}).addTo(mymap);
-        } else {
-            L.tileLayer('tiles/5000_wotus_tiles/{z}/{x}/{y}.png', {
-                tms: true,
-                opacity: 1,
-                attribution: "",
-                maxNativeZoom: 13}).addTo(mymap);
+function enable_input() {
+    $('#submit-button').removeAttr('disabled');
+    $('#clear-button').removeAttr('disabled');
+    $('#spinner').removeClass('is-active');
+}
+
+function clear_layers() {
+    mymap.eachLayer(function (layer) {
+        if (layer !== bg_layer) {
+            mymap.removeLayer(layer);
         }
-        $('#submit-button').removeAttr('disabled');
-        $('#clear-button').removeAttr('disabled');
-        $('#spinner').removeClass('is-active');
-    }, 10000);
+    });
+}
 
+function request_q_value(q_value) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/cahokia/wotus/" + q_value, true);
+    xhr.onload = function() {
+        if (xhr.status != 200) {
+            setTimeout(function(){
+                request_q_value(q_value);
+            }, 5000);
+        } else {
+            enable_input();
+            var layer = L.tileLayer.wms('/geoserver/ows?', {
+                layers: 'wotus:' + q_value,
+                format: 'image/png',
+                transparent: true
+            }).addTo(mymap);
+        }
+    };
+    xhr.send();
+}
+
+// Sumbit
+$("#submit-button").click(function() {
+    clear_layers();
+    disable_input();
+    request_q_value($("#number-input").val());
 });
 
 $("#clear-button").click(function() {
-    mymap.eachLayer(function (layer) {
-        mymap.removeLayer(layer);
-    });
-    L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-        attribution: 'Tiles &copy; <a href="http://www.arcgis.com/home/item.html?id=30e5fe3149c34df1ba922e6f5bbf808f">Esri</a> &mdash; See credits | Search data &copy; <a href="https://nominatim.openstreetmap.org/">OpenStreetMap</a>',
-        id: 'mapbox.streets'
-    }).addTo(mymap);
+    clear_layers();
 });
 
 // When the Page Loads
@@ -113,6 +105,6 @@ $(document).ready(function() {
     if (localStorage.getItem("hasRun") != 'true') {
         $('#wotusWelcome').removeAttr('class', 'hidden');
     } else {
-        localStorage.setItem("hasCodeRunBefore", 'true');
+        localStorage.setItem("hasRun", 'true');
     }
 })
