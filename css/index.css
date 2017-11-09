@@ -84,3 +84,7 @@ h2.mdl-card__title-text {
     font-weight: bold;
     font-size: 14px;
 }
+
+#number-input {
+    border-bottom-color: #757575;
+}
