@@ -1,6 +1,6 @@
 var mymap = L.map('mapid', {
     center: [39.0000085454, -89.9999783845],
-    maxZoom: 14,
+    maxZoom: 18,
     minZoom: 11
 });
 
@@ -72,6 +72,17 @@ function request_q_value(q_value) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/cahokia/wotus/" + q_value, true);
     xhr.onload = function() {
+        var response = JSON.parse(xhr.responseText);
+        var queued = response.queued;
+        var queuePosition = response.place;
+
+        if(queued) {
+            $('.estimatedTime').html('Estimated time to complete your request: ' + queuePosition);
+        }
+        else {
+            $('.estimatedTime').html('Unknown time remaining');
+        }
+
         if (xhr.status != 200) {
             setTimeout(function(){
                 request_q_value(q_value);

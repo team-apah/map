@@ -25,7 +25,7 @@
               WotUS Threshold:
           </div>
           <div id="map-slider">
-            <input class="mdl-slider mdl-js-slider slider-input" id="slider" type="range" min="100" max="20000" value="200" step="100">
+            <input class="mdl-slider mdl-js-slider slider-input" id="slider" type="range" min="100" max="10000000" value="200" step="100">
           </div>
           <div class="mdl-textfield mdl-js-textfield" id="slider-text">
             <input class="mdl-textfield__input slider-input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="number-input" value="200">
@@ -63,7 +63,8 @@
                     <h2 class="mdl-card__title-text">Your map is being generated!</h2>
                 </div>
                 <div class="mdl-card__supporting-text mdl-card--expand">
-                    Please wait while your map is being created. This might take a while. There is no need to refresh the page. Thanks for using WOTUS!
+                    <div>Please wait while your map is being created. This should take a couple of minutes. There is no need to refresh the page. Feel free to close this modal at any time while it loads.</div>
+                    <div id="estimatedTime"></div>
                 </div>
                 <div class="mdl-card__menu">
                     <button id="closeWait" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="closeWait()">
